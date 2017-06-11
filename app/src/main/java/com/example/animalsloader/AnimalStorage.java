@@ -1,6 +1,6 @@
 package com.example.animalsloader;
 
-import android.util.Log;
+import com.example.animalsloader.database.SQLiteAnimalsDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,40 +10,45 @@ import java.util.List;
  */
 
 public class AnimalStorage {
-    private List<Animal> mAnimalList;
     private List<AnimalListChanged> mAnimalListChangedList;
+    private SQLiteAnimalsDao mSQLiteAnimalsDao;
 
-    public AnimalStorage(){
+    public AnimalStorage(SQLiteAnimalsDao SQLiteAnimalsDao) {
         mAnimalListChangedList = new ArrayList<>();
-        mAnimalList = new ArrayList<>();
-        mAnimalList.add(new Animal("Мурка", "Cat", 3));
-        mAnimalList.add(new Animal("Матроскин", "Cat", 13));
-        mAnimalList.add(new Animal("Мишель", "Dog", 6));
-        mAnimalList.add(new Animal("Молния", "Horse", 8));
-        mAnimalList.add(new Animal("Калоша", "Duck", 1));
-        mAnimalList.add(new Animal("Ветерок", "Dove", 6));
-        mAnimalList.add(new Animal("Маруся", "Dog", 5));
-        mAnimalList.add(new Animal("Шип", "Horse", 7));
-        mAnimalList.add(new Animal("Коготь", "Duck", 4));
-        mAnimalList.add(new Animal("Горбатый", "Cat", 3));
+        mSQLiteAnimalsDao = SQLiteAnimalsDao;
     }
-    public void addToList(Animal animal){
-        Log.e("AnimalStorage","addToList");
-        mAnimalList.add(animal);
-        for(AnimalListChanged listListeners: mAnimalListChangedList){
-            listListeners.isChanged();
-            Log.e("ListListeners","isChanged()");
+
+    public void addToList(Animal animal) {
+        mSQLiteAnimalsDao.insertAnimal(animal);
+        for (AnimalListChanged listListeners : mAnimalListChangedList) {
+            listListeners.changingAnimalList();
         }
     }
-    public void AddChangeListListener(AnimalListChanged animalListChanged){
+
+    public void removeAnimal(Animal animal) {
+        mSQLiteAnimalsDao.deleteAnimal(animal);
+        for (AnimalListChanged listListeners : mAnimalListChangedList) {
+            listListeners.changingAnimalList();
+        }
+    }
+
+    public void replaceAnimal(Animal animal) {
+        mSQLiteAnimalsDao.updateAnimal(animal);
+        for (AnimalListChanged listListeners : mAnimalListChangedList) {
+            listListeners.changingAnimalList();
+        }
+
+    }
+
+    public void AddChangeListListener(AnimalListChanged animalListChanged) {
         mAnimalListChangedList.add(animalListChanged);
     }
 
     public List<Animal> getAnimalList() {
-        return mAnimalList;
+        return mSQLiteAnimalsDao.getAnimals();
     }
 
-    interface AnimalListChanged{
-        void isChanged();
+    interface AnimalListChanged {
+        void changingAnimalList();
     }
 }

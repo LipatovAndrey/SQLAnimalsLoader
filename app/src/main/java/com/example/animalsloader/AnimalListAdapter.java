@@ -15,45 +15,49 @@ import java.util.List;
 public class AnimalListAdapter extends BaseAdapter {
 
     private List<Animal> mAnimalList;
-    public AnimalListAdapter(List<Animal> animals){
+
+    public AnimalListAdapter(List<Animal> animals) {
         mAnimalList = animals;
     }
+
     @Override
     public int getCount() {
         return mAnimalList.size();
     }
 
     @Override
-    public Object getItem(int position) {
+    public Animal getItem(int position) {
         return mAnimalList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return getItem(position).getID();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         Animal currentAnimal = mAnimalList.get(position);
-        if (convertView == null){
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_animal,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_animal, parent, false);
             viewHolder = new ViewHolder();
 
             viewHolder.mNameView = (TextView) convertView.findViewById(R.id.itemName);
             viewHolder.mSpecieView = (TextView) convertView.findViewById(R.id.itemSpecie);
             viewHolder.mAgeView = (TextView) convertView.findViewById(R.id.itemAge);
 
-          convertView.setTag(viewHolder);
+            convertView.setTag(viewHolder);
         }
         viewHolder = (ViewHolder) convertView.getTag();
-        viewHolder.mNameView.setText(currentAnimal.getmName());
-        viewHolder.mSpecieView.setText(currentAnimal.getmSpecie());
-        viewHolder.mAgeView.setText(String.valueOf(currentAnimal.getmAge()));
+        viewHolder.mNameView.setText(currentAnimal.getName());
+        viewHolder.mSpecieView.setText(currentAnimal.getSpecie());
+        viewHolder.mAgeView.setText(String.valueOf(currentAnimal.getAge()));
+        convertView.setId((int) getItemId(position));
         return convertView;
     }
-    class ViewHolder{
+
+    class ViewHolder {
         TextView mNameView;
         TextView mSpecieView;
         TextView mAgeView;

@@ -5,34 +5,48 @@
     android:layout_height="match_parent"
     android:padding="@dimen/base_padding"
     >
-
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/name_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/newAnimalname"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edittext_height"
         android:layout_marginBottom="@dimen/edittext_margin_bottom"
-        android:inputType="text">
+        android:inputType="text"
+        android:hint="@string/field_name">
+        </EditText>
 
-    </EditText>
-
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/newAnimalSprcie"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edittext_height"
         android:layout_marginBottom="@dimen/edittext_margin_bottom"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:hint="@string/field_specie"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:inputType="numberDecimal"
         android:id="@+id/newAnimalAge"
         android:layout_width="match_parent"
         android:layout_height="@dimen/edittext_height"
-        android:layout_marginBottom="@dimen/edittext_margin_bottom"/>
+        android:layout_marginBottom="@dimen/edittext_margin_bottom"
+        android:hint="@string/field_age"/>
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:id="@+id/btnadd"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/button_height"
         android:layout_gravity="center"
-        android:text="Добавить животное"
+        android:text="@string/button_add_text"
         />
 
 </LinearLayout>

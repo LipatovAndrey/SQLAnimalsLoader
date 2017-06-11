@@ -2,6 +2,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/addAnimalMenu"
         android:title="add">Добавить новое животное</item>
-    <item android:id="@+id/removeAnimalMenu"
-        android:title="remove">Удалить животное</item>
 </menu>

@@ -13,7 +13,7 @@ import android.widget.Toast;
  */
 
 public class AddAnimalActivity extends AppCompatActivity {
-    private EditText mNameView, mAgeView, mSpesieView;
+    private EditText mNameView, mAgeView, mSpesieView ;
     private Button mBtnAddView;
     private AnimalStorage mAnimalStorage;
     @Override

@@ -3,4 +3,12 @@
     <string name="name">Имя</string>
     <string name="Specie">Вид</string>
     <string name="age">Возраст</string>
+    <string name="field_name">Имя</string>
+    <string name="field_specie">Вид</string>
+    <string name="field_age">Возраст</string>
+    <string name="button_add_text">Добавить животное</string>
+    <string name="id">ID</string>
+    <string name="long_click_dialog_title">Удалить или изменить?</string>
+    <string name="long_click_dialog_positive_button_text">Изменить</string>
+    <string name="long_click_dialog_negative_button_text">Удалить</string>
 </resources>

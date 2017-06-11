@@ -11,12 +11,12 @@
         android:layout_margin="@dimen/margin_item_animal_texteview"/>
     <TextView
         android:id="@+id/itemSpecie"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/item_animal_text_width"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_item_animal_texteview"/>
     <TextView
         android:id="@+id/itemAge"
-        android:layout_width="80dp"
+        android:layout_width="@dimen/item_animal_text_width"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_item_animal_texteview"/>
 </LinearLayout>
